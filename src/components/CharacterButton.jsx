@@ -1,14 +1,14 @@
 function CharacterButton (props) {
-    // const newMovie = 'Frozen';
+    
 
-    const getNewCharacter = (evt) => {
+    const getNewCharacterId = (evt) => {
         evt.preventDefault();
-        props.charactersearch(props.newCharacter);
+        props.characteridsearch(props.newCharacterId);
     }
 
     return (
-        <form onSubmit={getNewMovie}>
-            <input type='submit' value={props.newMovie}/>
+        <form onSubmit={getNewCharacterId}>
+            <input type='submit' value={props.newCharacterId}/>
         </form>
     )
 }
