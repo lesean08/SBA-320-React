@@ -13,7 +13,7 @@ function Form (props) {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        props.characteridsearch(formData.searchterm);
+        props.showssearch(formData.searchterm);
     }
     
     return (
@@ -28,7 +28,7 @@ function Form (props) {
 
                 <input type="submit" value='submit'/>
             </form>
-            <p>Search for Characters by typing Characters Name</p>
+            <p>Search for TV Shows</p>
         </div>
     )
 }

@@ -7,51 +7,49 @@ import './index.css';
 import './App.css';
 
 function App() {
-  const apiKey = "a44c72302a8384fc9b1baf14ebc2396e"; 
-  const [character, setCharacter] = useState(null); 
-  const [updateCharacterId, setUpdateCharacterId] = useState(0);
-
-  const getCharacterId = async (searchTerm) => {
-    const baseUrl = 'https://superheroapi.com/api/current.json?key=a44c72302a8384fc9b1baf14ebc2396e/character-id/image';
-    const url = `${baseUrl}${apiKey}/search/${image}`; 
+  const apiKey = "1034477-Wirefram-A333E1DB"; 
+  const [shows, setShows] = useState(null); 
+  const [updateShows, setUpdateShows] = useState(0);
 
   
-    }
-    
+  const getShows = async (searchTerm) => {
+    const baseUrl = 'https://tastedive.com/api/similar?q'; 
+    const url = `${baseUrl}?type=shows&k=${apiKey}&q=${searchTerm}`; 
+
     try {
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      if (data.results && data.results.length > 0) {
-        setCharacter(data.results[0]);
+      if (data.Similar && data.Similar.Results && data.Similar.Results.length > 0) {
+        setShows(data.Similar.Results[0]);
       } else {
-        setCharacter(null); 
+        setShows(null); 
       }
     } catch (err) {
       console.error(err);
-      setCharacter(null); 
+      setShows(null); 
     }
   };
 
   useEffect(() => {
-    const characterArray = ['Black Panther', 'Captain America', 'Spiderman', 'Hulk', 'Iron Man'];
-    const firstCharacter = characterArray[Math.floor(Math.random() * characterArray.length)];
-    getCharacterId(firstCharacter);
-  }, [updateCharacterId]);
+    const showsArray = ['Queen Charlotte', 'Mr. & Mrs. Smith', 'X-Men', 'That 90s Show', 'Tulsa King'];
+    const firstShow = showsArray[Math.floor(Math.random() * showsArray.length)];
+    getShows(firstShow);
+  }, [updateShows]);
 
   return (
     <>
-      <h1>Super Heroes</h1>
-      <UpdateButton updateCharacterId={updateCharacterId} setUpdateCharacterId={setUpdateCharacterId} />
-      <Form characterSearch={getCharacterId} />
-      <CharacterButton newCharacterId='Thor' characterSearch={getCharacterId} />
-      <CharacterButton newCharacterId='Doctor Strange' characterSearch={getCharacterId} />
-      <CharacterButton newCharacterId='Black Widow' characterSearch={getCharacterId} />
-      <CharacterButton newCharacterId='Vision' characterSearch={getCharacterId} />
-      <CharacterButton newCharacterId='Captain Marvel' characterSearch={getCharacterId} />
-      <CharacterDisplay character={character} />
+      <h1>TV SHOWS</h1>
+      <UpdateButton updateShows={updateShows} setUpdateShows={setUpdateShows} />
+      <Form showsSearch={getShows} />
+      <CharacterButton newShow='Fraiser' showsSearch={getShows} />
+      <CharacterButton newShow='Beef' showsSearch={getShows} />
+      <CharacterButton newShow='Monkie Kid' showsSearch={getShows} />
+      <CharacterButton newShow='Vision' showsSearch={getShows} />
+      <CharacterButton newShow='Captain Marvel' showsSearch={getShows} />
+      <CharacterDisplay shows={shows} />
     </>
   );
 }

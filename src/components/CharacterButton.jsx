@@ -1,16 +1,14 @@
-function CharacterButton (props) {
-    
-
-    const getNewCharacterId = (evt) => {
+function CharacterButton(props) {
+    const getNewShows = (evt) => {
         evt.preventDefault();
-        props.characteridsearch(props.newCharacterId);
+        props.showssearch(props.newShows);
     }
 
     return (
-        <form onSubmit={getNewCharacterId}>
-            <input type='submit' value={props.newCharacterId}/>
+        <form onSubmit={getNewShows}>
+            <button type='submit'>{props.newShows}</button>
         </form>
-    )
+    );
 }
 
 export default CharacterButton;

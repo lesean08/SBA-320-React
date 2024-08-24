@@ -4,17 +4,16 @@ function CharacterDisplay ( {character} ) {
     const loaded = () => {
         return (
             <>
-            <h1>{character-id.intelligence}</h1>
-            <h2>{character-id.power}</h2>
-            <img src={character-id.image} alt={character-id.combat}/>
-            <h2>{character.id}</h2>
-            <h3>Series</h3>
+            <h1>{shows.q}</h1>
+            <h2>{shows.tupe}</h2>
+            <h3>{shows.info}</h3>
+            <h4>shows.limit</h4>
             {
-                character.Series.map (series => {
+                shows.info.map (series => {
                     return(
                         <>
-                        <h4>{id.Source}</h4>
-                        <h4>{id.Value}</h4>
+                        <h4>{type.Source}</h4>
+                        <h4>{type.Value}</h4>
                         </>
                     )
                 })
@@ -24,7 +23,7 @@ function CharacterDisplay ( {character} ) {
     }
 
     const loading = () => {
-        return <h1>No Character to Display</h1>
+        return <h1>No Shows to Display</h1>
     }
 
     return (character ? loaded() : loading())
